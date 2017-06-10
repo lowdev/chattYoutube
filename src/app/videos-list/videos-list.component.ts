@@ -20,7 +20,7 @@ export class VideosListComponent implements OnInit {
       data => {
         let response: YoutubeSearchListResponse = data as YoutubeSearchListResponse;
         this.videos = response.items;
-        console.log(response.items[0].snippet.title);
+        console.log(response.items[0]);
       },
       err => console.log(err),
       () => console.log('yay'));

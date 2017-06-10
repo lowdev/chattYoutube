@@ -8,4 +8,17 @@ export class SearchResult {
 
 class Snippet {
   title: string;
+  thumbnails: Thumbnails;
+}
+
+class Thumbnails {
+  default: Thumbnail;
+  hight: Thumbnail;
+  medium: Thumbnail;
+}
+
+class Thumbnail {
+  height: number;
+  width: number;
+  url: string;
 }

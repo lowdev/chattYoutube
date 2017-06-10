@@ -8,38 +8,25 @@
   margin-left: 7px;
 }
 
-.video {
-    display: inline-block;
-    width: 250px;
-    height: 250px;
-    background-image: attr(data-image-src url);
-    background-position: center center;
-    background-size: cover;
-    overflow: hidden;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+.card-title {
+  width:100%;
+  background: rgba(0, 0, 0, 0.5);
 }
-.video:hover {
-    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-}
-.fluffie { background-image: url('//placekitten.com/1500/1000'); }
-.curious { background-image: url('//placekitten.com/1000/1500'); }
-.scurred { background-image: url('//placekitten.com/1000/500');  }
-.magesty { background-image: url('//placekitten.com/500/1000');  }
 
 @media screen and (max-width: 703px) {
-    .video .card {
+    .card {
         width: 200px;
     }
 }
 
 @media screen and (max-width: 500px) {
-    .video .card {
+    .card {
         width: 150px;
     }
 }
 
 @media screen and (max-width: 220px) {
-    .video .card {
+    .card {
         width: 100px;
     }
 }

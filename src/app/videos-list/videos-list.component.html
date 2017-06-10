@@ -4,18 +4,17 @@
 
 			<div class="card" *ngFor="let video of videos">
         <div class="card-image">
-          <img src="//placekitten.com/1500/1000">
-          <span class="card-title">Card Title</span>
+          <img src="{{ video.snippet.thumbnails.medium.url }}">
+					<!--
+					<span class="card-title"></span>
           <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-        </div>
+					-->
+				</div>
         <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+          <p>{{ video.snippet.title }}</p>
         </div>
       </div>
 
-		</div>
-		<div class="row">
-			<button (click)="search()">Click</button>
 		</div>
 	</div>
 </div>
