@@ -4,7 +4,14 @@
     "outDir": "../out-tsc/app",
     "module": "es2015",
     "baseUrl": "",
-    "types": []
+    "types": [
+      "gapi",
+      "gapi.youtube",
+      "gapi.auth2",
+      "youtube",
+      "jasmine",
+      "node"
+    ]
   },
   "exclude": [
     "test.ts",
