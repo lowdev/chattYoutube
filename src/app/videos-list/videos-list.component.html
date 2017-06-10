@@ -1,3 +1,21 @@
-<p>
-  videos-list works!
-</p>
+<div class="row row-container">
+	<div class="center col s12">
+		<div class="row">
+
+			<div class="card" *ngFor="let video of videos">
+        <div class="card-image">
+          <img src="//placekitten.com/1500/1000">
+          <span class="card-title">Card Title</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+
+		</div>
+		<div class="row">
+			<button (click)="search()">Click</button>
+		</div>
+	</div>
+</div>

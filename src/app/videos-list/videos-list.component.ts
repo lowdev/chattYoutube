@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { YoutubeSearch } from '../service/youtube.search';
+import { YoutubeSearchListResponse, SearchResult } from '../service/youtubeSearchListResponse.model';
 
 @Component({
   selector: 'videos-list',
@@ -8,13 +9,19 @@ import { YoutubeSearch } from '../service/youtube.search';
 })
 export class VideosListComponent implements OnInit {
 
+  videos: SearchResult[];
+
   constructor(private youtubeSearch: YoutubeSearch) { }
 
   ngOnInit() {
     this.youtubeSearch.resetPageToken()
-      .search("ozrics")
+      .search("E3")
       .subscribe(
-      data => console.log(data),
+      data => {
+        let response: YoutubeSearchListResponse = data as YoutubeSearchListResponse;
+        this.videos = response.items;
+        console.log(response.items[0].snippet.title);
+      },
       err => console.log(err),
       () => console.log('yay'));
   }

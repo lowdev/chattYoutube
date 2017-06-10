@@ -6,6 +6,8 @@ import { Authorization } from './authorization.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 
+import { YoutubeSearchListResponse } from './youtubeSearchListResponse.model';
+
 /**
  * Performs http requests using HttpModule to youtube-api v3.
  *
