@@ -13,6 +13,12 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
+.threelines {
+  font-size: 1em;
+  height: 3em;
+  overflow: hidden;
+}
+
 @media screen and (max-width: 703px) {
     .card {
         width: 200px;

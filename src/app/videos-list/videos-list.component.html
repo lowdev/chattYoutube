@@ -1,6 +1,6 @@
 <div class="row row-container">
-	<div class="center col s12">
-		<div class="row">
+	<div class="col s12">
+		<div class="row center">
 
 			<div class="card" *ngFor="let video of videos">
         <div class="card-image">
@@ -10,8 +10,8 @@
           <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
 					-->
 				</div>
-        <div class="card-content">
-          <p>{{ video.snippet.title }}</p>
+        <div class="threelines">
+          <b>{{ video.snippet.title }}</b>
         </div>
       </div>
 

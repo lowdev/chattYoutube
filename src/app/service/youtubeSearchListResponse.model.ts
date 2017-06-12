@@ -13,7 +13,7 @@ class Snippet {
 
 class Thumbnails {
   default: Thumbnail;
-  hight: Thumbnail;
+  high: Thumbnail;
   medium: Thumbnail;
 }
 
