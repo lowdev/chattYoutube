@@ -33,5 +33,6 @@
 .divider-color         { border-color: #BDBDBD; }
 
 body {
-  background-color: var(--light-secondary-color)
+  background-color: var(--light-secondary-color);
+  font-family: 'Roboto';
 }

@@ -10,8 +10,21 @@
           <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
 					-->
 				</div>
-        <div class="threelines">
-          <b>{{ video.snippet.title }}</b>
+        <div class="snippet">
+					<div class="row">
+						<div class="col s12 video-title">
+							{{ video.snippet.title }}
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col s9 channel-title">
+							{{ video.snippet.channelTitle }}
+						</div>
+						<div class="col s3 video-time">
+							16:00
+						</div>
+					</div>
         </div>
       </div>
 

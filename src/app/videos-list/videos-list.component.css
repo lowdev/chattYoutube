@@ -13,10 +13,26 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
-.threelines {
-  font-size: 1em;
-  height: 3em;
+.snippet {
   overflow: hidden;
+  text-align: left;
+  font-size: 1em;
+}
+
+.video-title {
+  height: 5em;
+  color: var(--primary-text-color);
+}
+
+.channel-title {
+  height: 2em;
+  color: var(--secondary-text-color);
+  text-align: left;
+}
+
+.video-time {
+  color: var(--secondary-text-color);
+  text-align: right;
 }
 
 @media screen and (max-width: 703px) {

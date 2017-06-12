@@ -9,6 +9,7 @@ export class SearchResult {
 class Snippet {
   title: string;
   thumbnails: Thumbnails;
+  channelTitle: string;
 }
 
 class Thumbnails {
