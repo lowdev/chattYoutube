@@ -46,7 +46,7 @@ export class YoutubeDataApi {
   }
   private _defaultUrlParams = {
     part: 'snippet,id',
-    maxResults: '50',
+    maxResults: '48',
     key: YOUTUBE_API_KEY
   };
 

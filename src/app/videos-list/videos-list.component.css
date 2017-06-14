@@ -1,7 +1,40 @@
 .row-container {
-    padding-top: 10px;
+  padding-top: 10px;
+  padding-left: 70px;
+  padding-right: 70px;
 }
 
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col {
+  display: flex;
+}
+
+.video-title {
+  color: #202121;
+  transition: color .3s ease-in-out;
+  text-decoration: none;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 25px;
+  height: 3em;
+}
+
+.card-content {
+  font-size: 14px;
+  font-weight: 300;
+  color: #202121;
+}
+
+.channel-title {
+  color: var(--accent-color);
+}
+
+/*
 .card {
   display: inline-block;
   width: 250px;
@@ -52,3 +85,4 @@
         width: 100px;
     }
 }
+*/

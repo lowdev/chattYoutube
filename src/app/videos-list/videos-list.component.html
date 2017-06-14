@@ -1,14 +1,9 @@
 <div class="row row-container">
-	<div class="col s12">
-		<div class="row center">
-
-			<div class="card" *ngFor="let video of videos">
+<!--
+	<div class="col l4 m4 s4 clearfix" *ngFor="let video of videos">
+			<div class="card">
         <div class="card-image">
           <img src="{{ video.snippet.thumbnails.medium.url }}">
-					<!--
-					<span class="card-title"></span>
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-					-->
 				</div>
         <div class="snippet">
 					<div class="row">
@@ -26,8 +21,32 @@
 						</div>
 					</div>
         </div>
-      </div>
 
 		</div>
 	</div>
+-->
+		<div class="row">
+      <div class="col s4" *ngFor="let video of videos">
+				<div class="card">
+	        <div class="card-image">
+	          <img src="{{ video.snippet.thumbnails.high.url }}">
+					</div>
+	        <div class="card-content">
+						<div class="row">
+							<div class="col s12 video-title">
+								<a class="video-title">{{ video.snippet.title }}</a>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col s9">
+								By &nbsp; <a class="channel-title"> {{ video.snippet.channelTitle }}</a>
+							</div>
+							<div class="col s3 video-time">
+								16:00
+							</div>
+						</div>
+	        </div>
+			</div>
+    </div>
 </div>
