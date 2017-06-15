@@ -21,7 +21,7 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 25px;
-  height: 3em;
+  /*height: 3em;*/
 }
 
 .card-content {
@@ -32,57 +32,6 @@
 
 .channel-title {
   color: var(--accent-color);
-}
+  line-height: 25px;
 
-/*
-.card {
-  display: inline-block;
-  width: 250px;
-  margin-left: 7px;
 }
-
-.card-title {
-  width:100%;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.snippet {
-  overflow: hidden;
-  text-align: left;
-  font-size: 1em;
-}
-
-.video-title {
-  height: 5em;
-  color: var(--primary-text-color);
-}
-
-.channel-title {
-  height: 2em;
-  color: var(--secondary-text-color);
-  text-align: left;
-}
-
-.video-time {
-  color: var(--secondary-text-color);
-  text-align: right;
-}
-
-@media screen and (max-width: 703px) {
-    .card {
-        width: 200px;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .card {
-        width: 150px;
-    }
-}
-
-@media screen and (max-width: 220px) {
-    .card {
-        width: 100px;
-    }
-}
-*/
