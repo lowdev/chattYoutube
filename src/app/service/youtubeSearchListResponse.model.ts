@@ -7,6 +7,7 @@ export class SearchResult {
 }
 
 class Snippet {
+  channelId: string;
   title: string;
   thumbnails: Thumbnails;
   channelTitle: string;
