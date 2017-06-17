@@ -24,6 +24,10 @@
   /*height: 3em;*/
 }
 
+.card .card-content {
+  padding: 12px;
+}
+
 .card-content {
   font-size: 14px;
   font-weight: 300;
