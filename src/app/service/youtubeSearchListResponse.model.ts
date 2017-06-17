@@ -3,7 +3,12 @@ export class YoutubeSearchListResponse {
 }
 
 export class SearchResult {
+  id: Id;
   snippet: Snippet;
+}
+
+class Id {
+  videoId: string;
 }
 
 class Snippet {

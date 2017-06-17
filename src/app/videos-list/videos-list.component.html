@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col s4" *ngFor="let video of videos">
 			<div class="card">
-				<div class="card-image hover01">
+				<div class="card-image hover01" [routerLink]="'/watch/' + video.id.videoId">
 					<figure><img src="{{ video.snippet.thumbnails.high.url }}"></figure>
 				</div>
 				<div class="card-content">

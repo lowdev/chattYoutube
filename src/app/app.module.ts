@@ -7,15 +7,13 @@ import { AppComponent } from './app.component';
 import { MaterializeModule } from 'angular2-materialize';
 import { VideosListComponent } from './videos-list/videos-list.component';
 import { VideosSearchBarComponent } from './videos-search-bar/videos-search-bar.component';
+import { VideoComponent } from './video/video.component';
 
 import { APP_SERVICES } from './service';
 
 const appRoutes: Routes = [
-  //{ path: 'video/:id', component: VideoComponent },
-  {
-    path: '',
-    component: VideosListComponent
-  },
+  { path: 'watch/:id', component: VideoComponent },
+  { path: '', component: VideosListComponent },
   //{ path: '**', component: PageNotFoundComponent }
 ];
 
@@ -23,7 +21,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     VideosListComponent,
-    VideosSearchBarComponent
+    VideosSearchBarComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,
