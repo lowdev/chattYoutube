@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-video',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VideoComponent implements OnInit {
 
-  constructor() { }
+  player: YT.Player;
+  private id;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe((params: Params) => this.id = params['id'])
   }
 
+  savePlayer(player) {
+    this.player = player;
+    console.log('player instance', player)
+  }
+
+  onStateChange(event) {
+    console.log('player state', event.data);
+  }
 }
