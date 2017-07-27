@@ -19,6 +19,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 run ng serve --open
 or
+ng build
 npm start
 
 ## Running unit tests
