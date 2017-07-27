@@ -1,20 +1,18 @@
-<div class="row row-container">
-	<div class="row">
-		<div class="col s4" *ngFor="let video of videos">
-			<div class="card">
-				<div class="card-image hover01" [routerLink]="'/watch/' + video.id.videoId">
-					<figure><img src="{{ video.snippet.thumbnails.high.url }}"></figure>
+<div class="row">
+  <div class="col s12 m6 l3" *ngFor="let video of videos">
+		<div class="card">
+			<div class="card-image hover01" [routerLink]="'/watch/' + video.id.videoId">
+				<figure><img src="{{ video.snippet.thumbnails.high.url }}"></figure>
+			</div>
+			<div class="card-content">
+				<div>
+					<a class="video-title">{{ video.snippet.title }}</a>
 				</div>
-				<div class="card-content">
-					<div>
-						<a class="video-title">{{ video.snippet.title }}</a>
-					</div>
-					<div>
-						By &nbsp;
-						<a [attr.href]="'https://www.youtube.com/channel/' + video.snippet.channelId" class="channel-title" target="_blank">
-							{{ video.snippet.channelTitle }}
-						</a>
-					</div>
+				<div>
+					By &nbsp;
+					<a [attr.href]="'https://www.youtube.com/channel/' + video.snippet.channelId" class="channel-title" target="_blank">
+						{{ video.snippet.channelTitle }}
+					</a>
 				</div>
 			</div>
 		</div>
