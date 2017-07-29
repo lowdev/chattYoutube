@@ -1,9 +1,25 @@
+<!--
 <nav>
     <div class="nav-wrapper">
         <div class="input-field">
-          <input #search (keyup.enter)="onEnter(search.value)" type="search" required>
           <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <input #search (keyup.enter)="onEnter(search.value)" type="search" required>
           <i class="material-icons">close</i>
         </div>
     </div>
 </nav>
+-->
+<div class="navbar-fixed">
+  <nav class="white">
+    <div class="nav-wrapper">
+              <div class="col s12 " >
+                <div class="row">
+                  <div class="input-field col s6 s12 red-text">
+                    <i class="red-text material-icons prefix">search</i>
+                    <input  #search (keyup.enter)="onEnter(search.value)" required type="text" placeholder="search" class="red-text" >
+                  </div>
+                </div>
+              </div>
+    </div>
+  </nav>
+</div>
