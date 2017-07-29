@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchSharedService } from '../service/search-shared.service';
 
 @Component({
   selector: 'videos-search-bar',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VideosSearchBarComponent implements OnInit {
 
-  constructor() { }
+  value = '';
+
+  constructor(private sharedService: SearchSharedService) { }
 
   ngOnInit() {
   }
 
+
+  onEnter(value: string) {
+    this.sharedService.emitChange(value);
+    this.value = value;
+  }
 }
