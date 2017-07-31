@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { YoutubeSearch } from '../service/youtube.search';
 import { YoutubeSearchListResponse, SearchResult } from '../service/youtubeSearchListResponse.model';
 import { SearchSharedService } from '../service/search-shared.service';
+
+import {MaterializeAction} from 'angular2-materialize';
 
 @Component({
   selector: 'videos-list',
@@ -9,25 +11,40 @@ import { SearchSharedService } from '../service/search-shared.service';
   styleUrls: ['./videos-list.component.css']
 })
 export class VideosListComponent implements OnInit {
-
+  modalActions = new EventEmitter<string | MaterializeAction>();
   videos: SearchResult[];
 
+  openModal() {
+    this.modalActions.emit({ action: "modal", params: ['open'] });
+  }
+  closeModal() {
+    this.modalActions.emit({ action: "modal", params: ['close'] });
+  }
   constructor(private youtubeSearch: YoutubeSearch, private sharedService: SearchSharedService) { }
 
   ngOnInit() {
-    this.sharedService.getMessage().subscribe(
-      text => {
-        console.log(text);
-        this.youtubeSearch.resetPageToken()
-          .search(text)
-          .subscribe(
-          data => {
-            let response: YoutubeSearchListResponse = data as YoutubeSearchListResponse;
-            this.videos = response.items;
-            console.log(response.items[0]);
-          },
-          err => console.log(err));
-      });
+    this.sharedService.getMessage()
+      .switchMap(text => this.youtubeSearch.resetPageToken().search(text))
+      .subscribe(
+      data => {
+        let response: YoutubeSearchListResponse = data as YoutubeSearchListResponse;
+        this.videos = response.items;
+        console.log(response.items[0]);
+      },
+      err => console.log(err));
+
+    this.search("E3");
   }
 
+  private search(text: string) {
+    this.youtubeSearch.resetPageToken()
+      .search(text)
+      .subscribe(
+      data => {
+        let response: YoutubeSearchListResponse = data as YoutubeSearchListResponse;
+        this.videos = response.items;
+        console.log(response.items[0]);
+      },
+      err => console.log(err));
+  }
 }

@@ -1,10 +1,23 @@
 <div class="row">
-  <div class="col s12 m6 l3" *ngFor="let video of videos">
+  <div class="col s12 m6 l3" *ngFor="let video of videos; let i=index">
 		<div class="card">
-			<div class="card-image hover01" [routerLink]="'/watch/' + video.id.videoId">
-				<figure><img src="{{ video.snippet.thumbnails.high.url }}"></figure>
-			</div>
+			<div class="card-image hover01">
+				<figure [routerLink]="'/watch/' + video.id.videoId">
+          <img src="{{ video.snippet.thumbnails.high.url }}">
+        </figure>
+      </div>
 			<div class="card-content">
+        <!-- Dropdown Trigger -->
+        <a materialize="dropdown" class='dropdown-button right' href='#' [attr.data-activates]='"dropdown" + i'>
+          <i class="material-icons">more_vert</i>
+        </a>
+
+        <!-- Dropdown Structure -->
+        <ul [attr.id]='"dropdown" + i' class='dropdown-content'>
+         <li><a>Create a chat room</a></li>
+         <li class="divider"></li>
+        </ul>
+
 				<div>
 					<a class="video-title">{{ video.snippet.title }}</a>
 				</div>
@@ -15,6 +28,6 @@
 					</a>
 				</div>
 			</div>
-		</div>
+    </div>
 	</div>
 </div>
