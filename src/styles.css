@@ -36,3 +36,19 @@ body {
   background-color: var(--light-secondary-color);
   font-family: "Roboto",serif;
 }
+
+#container, html, body {
+    height: 100%;
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 63px);
+  overflow: scroll;
+  overflow-x: hidden;
+
+  margin-bottom: 0px;
+  bottom: 0px;
+  top: 63px;
+}
