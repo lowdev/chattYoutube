@@ -37,8 +37,8 @@ body {
   font-family: "Roboto",serif;
 }
 
-#container, html, body {
-    height: 100%;
+.container-panel, html, body {
+  height: 100%;
 }
 
 .content {
