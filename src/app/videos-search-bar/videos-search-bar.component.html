@@ -1,8 +1,21 @@
+<ul id="slide-out" class="side-nav" style="transform: translateX(0%);">
+  <li><a (click)="gotoHome()"><i class="material-icons">home</i>Page d'accueil</a></li>
+  <li><div class="divider"></div></li>
+</ul>
+
 <div class="navbar-fixed">
   <nav class="white">
     <div class="nav-wrapper">
-        <div class="col s12 " >
-          <div class="row">
+        <div class="row" >
+          <div class="col s1">
+            <a href="#" materialize="sideNav" data-activates="slide-out"
+                [materializeActions]="sidenavActions"
+                [materializeParams]="[{edge: 'left', closeOnClick: true, draggable: true}]"
+                class="button-collapse show-on-large">
+              <i class="red-text material-icons">menu</i>
+            </a>
+          </div>
+          <div class="col s11">
             <div class="input-field col s6 s12 red-text">
               <i class="red-text material-icons prefix">search</i>
               <input  #search (keyup.enter)="onEnter(search.value)" required type="text" placeholder="search" class="red-text" >

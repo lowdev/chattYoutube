@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { SearchSharedService } from '../service/search-shared.service';
 
 @Component({
@@ -7,7 +7,8 @@ import { SearchSharedService } from '../service/search-shared.service';
   styleUrls: ['./videos-search-bar.component.css']
 })
 export class VideosSearchBarComponent implements OnInit {
-
+  sidenavActions = new EventEmitter<any>();
+  sidenavParams = [];
   value = '';
 
   constructor(private sharedService: SearchSharedService) { }
@@ -15,6 +16,10 @@ export class VideosSearchBarComponent implements OnInit {
   ngOnInit() {
   }
 
+  hideMenu(): void {
+    this.sidenavParams = ['hide'];
+    this.sidenavActions.emit('sideNav');
+  }
 
   onEnter(value: string) {
     this.sharedService.emitChange(value);
