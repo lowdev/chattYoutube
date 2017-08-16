@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { SearchSharedService } from '../service/search-shared.service';
+import { Router }              from '@angular/router';
 
 @Component({
   selector: 'videos-search-bar',
@@ -11,9 +12,13 @@ export class VideosSearchBarComponent implements OnInit {
   sidenavParams = [];
   value = '';
 
-  constructor(private sharedService: SearchSharedService) { }
+  constructor(private sharedService: SearchSharedService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  gotoHome() {
+    this.router.navigate(['/']);
   }
 
   hideMenu(): void {

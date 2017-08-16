@@ -6,16 +6,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterializeModule } from 'angular2-materialize';
 import { YoutubePlayerModule } from 'ng2-youtube-player';
 
+import { APP_SERVICES } from './service';
+
 import { AppComponent } from './app.component';
 import { VideosListComponent } from './videos-list/videos-list.component';
 import { VideosSearchBarComponent } from './videos-search-bar/videos-search-bar.component';
 import { VideoComponent } from './video/video.component';
-
-import { APP_SERVICES } from './service';
+import { RoomComponent } from './room/room.component';
 
 const appRoutes: Routes = [
   { path: 'watch/:id', component: VideoComponent },
   { path: '', component: VideosListComponent },
+  { path: 'room', component: RoomComponent },
   //{ path: '**', component: PageNotFoundComponent }
 ];
 
@@ -24,7 +26,8 @@ const appRoutes: Routes = [
     AppComponent,
     VideosListComponent,
     VideosSearchBarComponent,
-    VideoComponent
+    VideoComponent,
+    RoomComponent
   ],
   imports: [
     BrowserModule,
