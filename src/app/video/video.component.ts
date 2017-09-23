@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 
 import { EventVideoService } from '../service/event-video.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -13,13 +12,21 @@ import { Subscription } from 'rxjs/Subscription';
 export class VideoComponent implements OnInit {
 
   player: YT.Player;
+
+  @Input()
   id: string;
+
+  @Input()
+  height: number;
+
+  @Input()
+  width: number;
+
   connection: Subscription;
 
-  constructor(private route: ActivatedRoute, private eventVideoService: EventVideoService) { }
+  constructor(private eventVideoService: EventVideoService) { }
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => this.id = params['id']);
     this.connection = this.eventVideoService.getMessages().subscribe(message => {
       console.log("message received: " + message["text"]);
       switch (message["text"]) {
@@ -35,6 +42,11 @@ export class VideoComponent implements OnInit {
     })
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    this.player.loadVideoById(changes.id.currentValue);
+    this.id = changes.id.currentValue;
+  }
+
   savePlayer(player) {
     this.player = player;
     console.log('player instance', player)
@@ -43,8 +55,6 @@ export class VideoComponent implements OnInit {
   onStateChange(event) {
     this.eventVideoService.sendMessage(event.data);
   }
-
-
 }
 
 enum PlayerState {

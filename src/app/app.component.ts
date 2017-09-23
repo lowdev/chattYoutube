@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  id: string;
+
+  onVideoClicked(videoId) {
+    this.id = videoId;
+    console.log(videoId);
+  }
 }

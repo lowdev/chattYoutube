@@ -2,6 +2,10 @@
   <videos-search-bar></videos-search-bar>
 
   <div class="content">
-    <router-outlet></router-outlet>
+    <videos-list (onVideoClicked)="onVideoClicked($event)"></videos-list>
   </div>
+</div>
+
+<div class="video-player-widget">
+  <app-video [id]="id" width="100" height="100"></app-video>
 </div>

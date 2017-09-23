@@ -1,0 +1,11 @@
+.video-player-widget {
+  position: absolute;
+  bottom: 0px;
+  right: 17px;
+  width: 200px;
+  height: 100px;
+
+  border: 1px solid #000;
+  z-index: 999;
+  background-color: white;
+}
