@@ -1,7 +1,9 @@
 <ul id="slide-out" class="side-nav" style="transform: translateX(0%);">
+  <!-- Modal Trigger -->
+  <li><a class="waves-effect waves-light btn modal-trigger" (click)="openModal()">Login</a></li>
+  <li><div class="divider"></div></li>
   <li><a routerLink="/"><i class="material-icons">home</i>Page d'accueil</a></li>
   <li><a routerLink="/room">Rooms</a></li>
-  <li><div class="divider"></div></li>
 </ul>
 
 <div class="navbar-fixed">
@@ -25,4 +27,21 @@
         </div>
     </div>
   </nav>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal bottom-sheet" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
+  <div class="modal-content">
+    <h4>Login</h4>
+    <div class="row">
+      <div class="input-field col s6">
+        <input #loginInput type="text">
+        <label class="active" for="login">Name</label>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-green btn-flat"
+       (click)='submit(loginInput.value)'>Ok</a>
+  </div>
 </div>

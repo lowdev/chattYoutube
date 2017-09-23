@@ -3,6 +3,7 @@ import { GapiLoader } from './gapi-loader.service';
 import { Authorization } from './authorization.service';
 import { YoutubeDataApi } from './youtube-data-api.service';
 import { SearchSharedService } from './search-shared.service';
+import { LocalStorageService } from './localStorage.service';
 
 export * from './youtube.search';
 export * from './gapi-loader.service';
@@ -13,5 +14,6 @@ export const APP_SERVICES = [
   { provide: GapiLoader, useClass: GapiLoader },
   { provide: Authorization, useClass: Authorization },
   { provide: YoutubeDataApi, useClass: YoutubeDataApi },
-  { provide: SearchSharedService, useClass: SearchSharedService }
+  { provide: SearchSharedService, useClass: SearchSharedService },
+  //{ provide: LocalStorageService, userClass: LocalStorageService },
 ];

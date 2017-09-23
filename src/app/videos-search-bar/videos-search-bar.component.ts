@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { SearchSharedService } from '../service/search-shared.service';
 import { Router }              from '@angular/router';
+import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
   selector: 'videos-search-bar',
@@ -9,12 +10,20 @@ import { Router }              from '@angular/router';
 })
 export class VideosSearchBarComponent implements OnInit {
   sidenavActions = new EventEmitter<any>();
+  modalActions = new EventEmitter<string | MaterializeAction>();
   sidenavParams = [];
   value = '';
 
   constructor(private sharedService: SearchSharedService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  openModal() {
+    this.modalActions.emit({ action: "modal", params: ['open'] });
+  }
+  closeModal() {
+    this.modalActions.emit({ action: "modal", params: ['close'] });
   }
 
   gotoHome() {
@@ -26,8 +35,12 @@ export class VideosSearchBarComponent implements OnInit {
     this.sidenavActions.emit('sideNav');
   }
 
-  onEnter(value: string) {
+  onEnter(value: string): void {
     this.sharedService.emitChange(value);
     this.value = value;
+  }
+
+  submit(value: string): void {
+    localStorage.set('login', value);
   }
 }
