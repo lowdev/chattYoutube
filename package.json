@@ -37,7 +37,7 @@
     "hammerjs": "2.0.8",
     "ng2-youtube-player": "0.0.3",
     "express": "4.15.3",
-	"socket.io": "^2.0.2"
+    "socket.io": "^2.0.2"
   },
   "devDependencies": {
     "@angular/cli": "1.1.0",
