@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+declare var $: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,6 +13,10 @@ export class AppComponent {
 
   onVideoClicked(videoId) {
     this.id = videoId;
-    console.log(videoId);
+    $(".video-player-widget").slideDown();
+  }
+
+  hideVideoPlayerWidget() {
+    $(".video-player-widget").slideToggle();
   }
 }

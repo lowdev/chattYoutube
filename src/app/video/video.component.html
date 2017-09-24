@@ -1,11 +1,9 @@
-<div class="row wrapper-panel">
-  <div class="col s12 center right-content">
-    <p><youtube-player
+<div>
+    <youtube-player
           [videoId]="id"
           [height]="height"
           [width]="width"
           (ready)="savePlayer($event)"
           (change)="onStateChange($event)"
-    ></youtube-player></p>
-  </div>
+    ></youtube-player>
 </div>
