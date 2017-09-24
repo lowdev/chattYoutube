@@ -43,7 +43,9 @@ export class VideoComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.player.loadVideoById(changes.id.currentValue);
+    if (this.player != null) {
+      this.player.loadVideoById(changes.id.currentValue);
+    }
     this.id = changes.id.currentValue;
   }
 
@@ -53,6 +55,7 @@ export class VideoComponent implements OnInit {
   }
 
   onStateChange(event) {
+    console.log("message received: " + event.data);
     this.eventVideoService.sendMessage(event.data);
   }
 }
