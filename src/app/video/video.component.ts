@@ -28,8 +28,13 @@ export class VideoComponent implements OnInit {
 
   ngOnInit() {
     this.connection = this.eventVideoService.getMessages().subscribe(message => {
-      console.log("message received: " + message["text"]);
-      switch (message["text"]) {
+      console.log("message received playerState: " + message["text"]["playerState"]);
+
+      switch (message["text"]["playerState"]) {
+        case PlayerState.LOAD:
+          console.log("message received videoId: " + message["text"]["videoId"]);
+          this.player.loadVideoById(message["text"]["videoId"]);
+          break;
         case PlayerState.PLAY:
           this.player.playVideo();
           break;
@@ -43,10 +48,12 @@ export class VideoComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (this.player != null) {
-      this.player.loadVideoById(changes.id.currentValue);
-    }
     this.id = changes.id.currentValue;
+
+    if (this.player != null) {
+      this.player.loadVideoById(this.id);
+      this.eventVideoService.sendMessage({ playerState: PlayerState.LOAD, videoId: this.id });
+    }
   }
 
   savePlayer(player) {
@@ -56,11 +63,12 @@ export class VideoComponent implements OnInit {
 
   onStateChange(event) {
     console.log("message received: " + event.data);
-    this.eventVideoService.sendMessage(event.data);
+    this.eventVideoService.sendMessage({ playerState: event.data, id: this.id });
   }
 }
 
 enum PlayerState {
+  LOAD = -2,
   PLAY = 1,
   PAUSE = 2
 }
