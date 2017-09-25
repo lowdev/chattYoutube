@@ -1,4 +1,9 @@
-<div>
+<div class="row">
+  <!--
+  <div class="col s1 playlist">
+  </div>
+
+  <div class="col s11">-->
     <youtube-player
           [videoId]="id"
           [height]="height"
@@ -6,4 +11,5 @@
           (ready)="savePlayer($event)"
           (change)="onStateChange($event)"
     ></youtube-player>
+  <!--<div>-->
 </div>
