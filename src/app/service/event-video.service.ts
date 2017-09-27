@@ -10,6 +10,7 @@ export class EventVideoService {
   private socket;
 
   constructor() {
+    this.url = window.location.origin;
     this.socket = io(this.url);
   }
 
