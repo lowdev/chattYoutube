@@ -30,6 +30,6 @@ io.on('connection', (socket) => {
 
 // Start the app by listening on the default
 // Heroku port
-http.listen(process.env.PORT || 4200, () => {
-  console.log('started on port 4200');
+http.listen(process.env.PORT || 8080, () => {
+  console.log('started on port 8080');
 });
