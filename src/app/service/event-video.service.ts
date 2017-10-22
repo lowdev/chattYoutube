@@ -12,8 +12,8 @@ export class EventVideoService {
     this.socket = io();
   }
 
-  sendMessage(message) {
-    this.socket.emit('add-message', message);
+  sendMessage(type, message) {
+    this.socket.emit(type, message);
   }
 
   getMessages() {

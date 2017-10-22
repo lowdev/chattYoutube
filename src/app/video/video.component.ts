@@ -27,6 +27,22 @@ export class VideoComponent implements OnInit {
   constructor(private eventVideoService: EventVideoService) { }
 
   ngOnInit() {
+
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.id = changes.id.currentValue;
+
+    if (this.player != null) {
+      this.player.loadVideoById(this.id);
+      this.eventVideoService.sendMessage('add-message', { playerState: PlayerState.LOAD, videoId: this.id });
+    }
+  }
+
+  savePlayer(player) {
+    this.player = player;
+    console.log('player instance', player)
+
     this.connection = this.eventVideoService.getMessages().subscribe(message => {
       console.log("message received playerState: " + message["text"]["playerState"]);
 
@@ -44,26 +60,14 @@ export class VideoComponent implements OnInit {
         default:
           break;
       }
-    })
-  }
+    });
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.id = changes.id.currentValue;
-
-    if (this.player != null) {
-      this.player.loadVideoById(this.id);
-      this.eventVideoService.sendMessage({ playerState: PlayerState.LOAD, videoId: this.id });
-    }
-  }
-
-  savePlayer(player) {
-    this.player = player;
-    console.log('player instance', player)
+    this.eventVideoService.sendMessage('player-ready', "");
   }
 
   onStateChange(event) {
     console.log("message received: " + event.data);
-    this.eventVideoService.sendMessage({ playerState: event.data, id: this.id });
+    this.eventVideoService.sendMessage('add-message', { playerState: event.data, id: this.id });
   }
 }
 

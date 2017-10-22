@@ -15,6 +15,8 @@ app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
+var currentState = { playerState: "", id: "" };
+
 io.on('connection', (socket) => {
   console.log('user connected');
 
@@ -23,7 +25,13 @@ io.on('connection', (socket) => {
   });
 
   socket.on('add-message', (message) => {
+    currentState = message;
     io.emit('message', {type:'new-message', text: message});
+  });
+
+  socket.on('player-ready', (message) => {
+    console.log("currentState: " + currentState["id"]);
+    socket.emit('message', {type:'new-message', text: { playerState: -2, videoId: currentState["id"] } });
   });
 });
 
