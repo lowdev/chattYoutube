@@ -67,7 +67,13 @@ export class VideoComponent implements OnInit {
 
   onStateChange(event) {
     console.log("message received: " + event.data);
-    this.eventVideoService.sendMessage('add-message', { playerState: event.data, id: this.id });
+    this.eventVideoService.sendMessage('add-message',
+      {
+        playerState: event.data,
+        videoId: this.id,
+        currentTime: this.player.getCurrentTime()
+      }
+    );
   }
 }
 
