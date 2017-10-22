@@ -35,6 +35,7 @@ export class VideoComponent implements OnInit {
 
     if (this.player != null) {
       this.player.loadVideoById(this.id);
+
       this.eventVideoService.sendMessage('add-message', { playerState: PlayerState.LOAD, videoId: this.id });
     }
   }
@@ -44,12 +45,10 @@ export class VideoComponent implements OnInit {
     console.log('player instance', player)
 
     this.connection = this.eventVideoService.getMessages().subscribe(message => {
-      console.log("message received playerState: " + message["text"]["playerState"]);
-
       switch (message["text"]["playerState"]) {
         case PlayerState.LOAD:
-          console.log("message received videoId: " + message["text"]["videoId"]);
-          this.player.loadVideoById(message["text"]["videoId"], message["text"]["currentTime"]);
+          this.id = message["text"]["videoId"];
+          this.player.loadVideoById(this.id, message["text"]["currentTime"]);
           break;
         case PlayerState.PLAY:
           this.player.playVideo();

@@ -30,7 +30,6 @@ io.on('connection', (socket) => {
   });
 
   socket.on('player-ready', (message) => {
-    console.log("currentState: " + currentState["currentTime"]);
     socket.emit('message', {type:'new-message', text: { playerState: -2, videoId: currentState["videoId"], currentTime: currentState["currentTime"] } });
   });
 });
