@@ -49,7 +49,7 @@ export class VideoComponent implements OnInit {
       switch (message["text"]["playerState"]) {
         case PlayerState.LOAD:
           console.log("message received videoId: " + message["text"]["videoId"]);
-          this.player.loadVideoById(message["text"]["videoId"]);
+          this.player.loadVideoById(message["text"]["videoId"], message["text"]["currentTime"]);
           break;
         case PlayerState.PLAY:
           this.player.playVideo();
