@@ -45,6 +45,7 @@ export class VideoComponent implements OnInit {
     console.log('player instance', player)
 
     this.connection = this.eventVideoService.getMessages().subscribe(message => {
+      console.log("message received: " + message["text"]["playerState"]);
       switch (message["text"]["playerState"]) {
         case PlayerState.LOAD:
           this.id = message["text"]["videoId"];
@@ -65,7 +66,7 @@ export class VideoComponent implements OnInit {
   }
 
   onStateChange(event) {
-    console.log("message received: " + event.data);
+    console.log("message onStateChange: " + event.data);
     this.eventVideoService.sendMessage('add-message',
       {
         playerState: event.data,

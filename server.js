@@ -26,7 +26,7 @@ io.on('connection', (socket) => {
 
   socket.on('add-message', (message) => {
     currentState = message;
-    io.emit('message', {type:'new-message', text: message});
+    socket.broadcast.emit('message', {type:'new-message', text: message});
   });
 
   socket.on('player-ready', (message) => {
