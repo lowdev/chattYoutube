@@ -13,6 +13,8 @@ export class VideoComponent implements OnInit {
 
   player: YT.Player;
 
+  shouldSendEvent: boolean = true;
+
   @Input()
   id: string;
 
@@ -27,7 +29,6 @@ export class VideoComponent implements OnInit {
   constructor(private eventVideoService: EventVideoService) { }
 
   ngOnInit() {
-
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -46,6 +47,7 @@ export class VideoComponent implements OnInit {
 
     this.connection = this.eventVideoService.getMessages().subscribe(message => {
       console.log("message received: " + message["text"]["playerState"]);
+      this.shouldSendEvent = false;
       switch (message["text"]["playerState"]) {
         case PlayerState.LOAD:
           this.id = message["text"]["videoId"];
@@ -60,12 +62,18 @@ export class VideoComponent implements OnInit {
         default:
           break;
       }
+
+      setTimeout(() => this.shouldSendEvent = true, 1000);
     });
 
     this.eventVideoService.sendMessage('player-ready', "");
   }
 
   onStateChange(event) {
+    if (!this.shouldSendEvent) {
+      return;
+    }
+
     console.log("message onStateChange: " + event.data);
     this.eventVideoService.sendMessage('add-message',
       {
