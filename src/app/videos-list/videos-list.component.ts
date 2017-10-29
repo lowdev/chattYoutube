@@ -36,7 +36,7 @@ export class VideosListComponent implements OnInit {
       },
       err => console.log(err));
 
-    this.getMostPopularVideos("JP");
+    this.getMostPopularVideos("FR");
   }
 
   private getMostPopularVideos(regionCode: string) {

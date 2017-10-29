@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 
 import { EventVideoService } from '../service/event-video.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -32,17 +32,24 @@ export class VideoComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.id = changes.id.currentValue;
+    if (changes.id != null) {
+      this.id = changes.id.currentValue;
+      if (this.player != null) {
+        this.player.loadVideoById(this.id);
 
-    if (this.player != null) {
-      this.player.loadVideoById(this.id);
+        this.eventVideoService.sendMessage('add-message', { playerState: PlayerState.LOAD, videoId: this.id });
+      }
+    }
 
-      this.eventVideoService.sendMessage('add-message', { playerState: PlayerState.LOAD, videoId: this.id });
+    if (changes.width != null) {
+      this.height = changes.height.currentValue;
+      this.width = changes.width.currentValue;
     }
   }
 
   savePlayer(player) {
     this.player = player;
+    this.player.setSize(this.width, this.height);
     console.log('player instance', player)
 
     this.connection = this.eventVideoService.getMessages().subscribe(message => {

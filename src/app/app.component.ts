@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 
 declare var $: any;
 
@@ -7,9 +7,22 @@ declare var $: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'app';
   id: string;
+  width: number;
+  height: number;
+
+  @ViewChild('videoPlayer')
+  videoPlayer: ElementRef;
+
+  constructor(private _changeDetectionRef: ChangeDetectorRef) { }
+
+  ngAfterViewInit() {
+    this.width = this.videoPlayer.nativeElement.offsetWidth;
+    this.height = this.videoPlayer.nativeElement.offsetHeight;
+    this._changeDetectionRef.detectChanges();
+  }
 
   onVideoClicked(videoId) {
     this.id = videoId;
