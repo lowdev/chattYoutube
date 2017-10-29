@@ -36,13 +36,13 @@ export class VideosListComponent implements OnInit {
       },
       err => console.log(err));
 
-    this.search("E3");
+    this.getMostPopularVideos("JP");
   }
 
-  private search(text: string) {
+  private getMostPopularVideos(regionCode: string) {
     this.videos = [];
     this.youtubeSearch.resetPageToken()
-      .search(text)
+      .getMostPopularVideos(regionCode)
       .subscribe(
       data => {
         let response: YoutubeSearchListResponse = data as YoutubeSearchListResponse;

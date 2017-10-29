@@ -10,7 +10,9 @@ export class YoutubeSearch {
     part: 'snippet,id',
     q: '',
     type: 'video',
-    pageToken: ''
+    pageToken: '',
+    chart: '',
+    regionCode: ''
   };
 
   constructor(
@@ -33,5 +35,11 @@ export class YoutubeSearch {
   resetPageToken() {
     this._apiOptions.pageToken = '';
     return this;
+  }
+
+  getMostPopularVideos(region: string) {
+    this._apiOptions.chart = 'mostPopular';
+    this._apiOptions.regionCode = region;
+    return this.youtubeDataApi.list(this._api, this._apiOptions);
   }
 }
