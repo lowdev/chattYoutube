@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
 
 import { MaterializeModule } from 'angular2-materialize';
 import { YoutubePlayerModule } from 'ng2-youtube-player';
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpModule,
     MaterializeModule,
+    FormsModule,
     YoutubePlayerModule
   ],
   providers: [

@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { SearchSharedService } from '../service/search-shared.service';
 import { Router }              from '@angular/router';
+import { NgForm }            from '@angular/forms';
 import { MaterializeAction } from 'angular2-materialize';
 
 @Component({
@@ -12,7 +13,6 @@ export class VideosSearchBarComponent implements OnInit {
   sidenavActions = new EventEmitter<any>();
   modalActions = new EventEmitter<string | MaterializeAction>();
   sidenavParams = [];
-  value = '';
 
   constructor(private sharedService: SearchSharedService, private router: Router) { }
 
@@ -35,9 +35,8 @@ export class VideosSearchBarComponent implements OnInit {
     this.sidenavActions.emit('sideNav');
   }
 
-  onEnter(value: string): void {
-    this.sharedService.emitChange(value);
-    this.value = value;
+  onSubmit(searchForm: NgForm) {
+    this.sharedService.emitChange(searchForm.value["search"]);
   }
 
   submit(value: string): void {

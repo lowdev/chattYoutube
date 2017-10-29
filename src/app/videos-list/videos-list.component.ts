@@ -40,6 +40,7 @@ export class VideosListComponent implements OnInit {
   }
 
   private search(text: string) {
+    this.videos = [];
     this.youtubeSearch.resetPageToken()
       .search(text)
       .subscribe(
@@ -48,7 +49,8 @@ export class VideosListComponent implements OnInit {
         this.videos = response.items;
         console.log(response.items[0]);
       },
-      err => console.log(err));
+      err => console.log(err)
+      );
   }
 
   private onVideoClick(videoId: string) {

@@ -19,10 +19,12 @@
             </a>
           </div>
           <div class="col s11">
-            <div class="input-field col s6 s12 red-text">
-              <i class="red-text material-icons prefix">search</i>
-              <input  #search (keyup.enter)="onEnter(search.value)" required type="text" placeholder="search" class="red-text" >
-            </div>
+            <form (ngSubmit)="onSubmit(searchForm)" #searchForm="ngForm" autocomplete="off" novalidate>
+              <div class="input-field col s6 s12 red-text">
+                <i class="red-text material-icons prefix">search</i>
+                <input name="search" #search="ngModel" ngModel required type="text" placeholder="search" class="red-text" >
+              </div>
+            </form>
           </div>
         </div>
     </div>
