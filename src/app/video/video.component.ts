@@ -54,6 +54,7 @@ export class VideoComponent implements OnInit {
           this.player.loadVideoById(this.id, message["text"]["currentTime"]);
           break;
         case PlayerState.PLAY:
+          this.player.seekTo(message["text"]["currentTime"], true);
           this.player.playVideo();
           break;
         case PlayerState.PAUSE:
