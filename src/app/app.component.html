@@ -1,20 +1,32 @@
-<div class="container-panel">
-  <videos-search-bar></videos-search-bar>
+<div *ngIf="!isMobile">
+  <div class="container-panel">
+    <videos-search-bar></videos-search-bar>
 
-  <div class="content">
-    <videos-list (onVideoClicked)="onVideoClicked($event)"></videos-list>
+    <div class="content">
+      <videos-list (onVideoClicked)="onVideoClicked($event)"></videos-list>
+    </div>
+  </div>
+
+  <div #videoPlayer class="video-player-widget">
+    <app-video [id]="id" [width]="width" [height]="height"></app-video>
+  </div>
+
+  <div class="fixed-action-btn toolbar action-bar active">
+    <ul>
+      <li class="waves-effect waves-light"><a href="#">Welcome test room !</a></li>
+      <li class="waves-effect waves-light"><a href="#!"></a></li>
+      <li class="waves-effect waves-light"><a href="#!"></a></li>
+      <li class="waves-effect waves-light"><a href="#!" (click)="hideVideoPlayerWidget()"><i class="material-icons">flip_to_front</i></a></li>
+    </ul>
   </div>
 </div>
 
-<div #videoPlayer class="video-player-widget">
-  <app-video [id]="id" [width]="width" [height]="height"></app-video>
-</div>
-
-<div class="fixed-action-btn toolbar action-bar active">
-  <ul>
-    <li class="waves-effect waves-light"><a href="#">Welcome test room !</a></li>
-    <li class="waves-effect waves-light"><a href="#!"></a></li>
-    <li class="waves-effect waves-light"><a href="#!"></a></li>
-    <li class="waves-effect waves-light"><a href="#!" (click)="hideVideoPlayerWidget()"><i class="material-icons">flip_to_front</i></a></li>
-  </ul>
+<div class="vbox viewport" *ngIf="isMobile">
+  <div class="app-video-mobile">
+    <app-video [id]="id" [width]="426" [height]="240"></app-video>
+  </div>
+  <div class="videos-list-mobile">
+    <videos-search-bar></videos-search-bar>
+    <videos-list (onVideoClicked)="onVideoClicked($event)"></videos-list>
+  </div>
 </div>

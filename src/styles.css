@@ -37,18 +37,8 @@ body {
   font-family: "Roboto",serif;
 }
 
-.container-panel, html, body {
-  height: 100%;
-}
-
-.content {
-  position: absolute;
+html, body {
   width: 100%;
-  height: calc(100% - 63px);
-  overflow: scroll;
-  overflow-x: hidden;
-
-  margin-bottom: 0px;
-  bottom: 0px;
-  top: 63px;
+  height: 100%;
+  margin: 0;
 }

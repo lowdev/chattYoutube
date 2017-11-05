@@ -12,6 +12,7 @@ export class AppComponent implements AfterViewInit {
   id: string;
   width: number;
   height: number;
+  isMobile: boolean;
 
   @ViewChild('videoPlayer')
   videoPlayer: ElementRef;
@@ -19,6 +20,11 @@ export class AppComponent implements AfterViewInit {
   constructor(private _changeDetectionRef: ChangeDetectorRef) { }
 
   ngAfterViewInit() {
+    this.isMobile = window.innerWidth < 900;
+    if (this.videoPlayer == null) {
+      return;
+    }
+
     this.width = this.videoPlayer.nativeElement.offsetWidth;
     this.height = this.videoPlayer.nativeElement.offsetHeight;
     this._changeDetectionRef.detectChanges();
