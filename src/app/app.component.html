@@ -27,6 +27,6 @@
   </div>
   <div class="videos-list-mobile">
     <videos-search-bar></videos-search-bar>
-    <videos-list (onVideoClicked)="onVideoClicked($event)"></videos-list>
+    <videos-list [isMobile]="isMobile" (onVideoClicked)="onVideoClicked($event)"></videos-list>
   </div>
 </div>

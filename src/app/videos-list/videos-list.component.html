@@ -1,4 +1,4 @@
-<div class="row">
+<div *ngIf="!isMobile" class="row">
   <div class="col s11 m4 l2" *ngFor="let video of videos; let i=index">
 		<div class="card">
 			<div class="card-image hover01">
@@ -30,4 +30,29 @@
 			</div>
     </div>
 	</div>
+</div>
+
+<div *ngIf="isMobile" style="text-align: center;">
+  <div class="col s12 m7 card-container" style="display: inline-block;" *ngFor="let video of videos; let i=index">
+    <div class="card card-video horizontal">
+      <div class="card-image hover01">
+				<figure (click)="onVideoClick(video.id.videoId)">
+          <img src="{{ video.snippet.thumbnails.default.url }}">
+        </figure>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <div>
+  					<a class="video-title">{{ video.snippet.title }}</a>
+  				</div>
+  				<div>
+  					By &nbsp;
+  					<a [attr.href]="'https://www.youtube.com/channel/' + video.snippet.channelId" class="channel-title" target="_blank">
+  						{{ video.snippet.channelTitle }}
+  					</a>
+  				</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

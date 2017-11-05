@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { YoutubeSearch } from '../service/youtube.search';
 import { YoutubeSearchListResponse, SearchResult } from '../service/youtubeSearchListResponse.model';
 import { SearchSharedService } from '../service/search-shared.service';
@@ -13,6 +13,9 @@ import {MaterializeAction} from 'angular2-materialize';
 export class VideosListComponent implements OnInit {
   modalActions = new EventEmitter<string | MaterializeAction>();
   videos: SearchResult[];
+
+  @Input()
+  private isMobile: boolean;
 
   @Output()
   private onVideoClicked: EventEmitter<String> = new EventEmitter<String>();
