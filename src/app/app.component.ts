@@ -10,23 +10,31 @@ declare var $: any;
 export class AppComponent implements AfterViewInit {
   title = 'app';
   id: string;
-  width: number;
-  height: number;
   isMobile: boolean;
 
   @ViewChild('videoPlayer')
   videoPlayer: ElementRef;
+  width: number;
+  height: number;
+
+  @ViewChild('mobileVideoPlayer')
+  mobileVideoPlayer: ElementRef;
+  widthMobile: number;
+  heightMobile: number;
 
   constructor(private _changeDetectionRef: ChangeDetectorRef) { }
 
   ngAfterViewInit() {
     this.isMobile = window.innerWidth < 900;
-    if (this.videoPlayer == null) {
-      return;
+    if (this.videoPlayer != null) {
+      this.width = this.videoPlayer.nativeElement.offsetWidth;
+      this.height = this.videoPlayer.nativeElement.offsetHeight;
+    }
+    if (this.mobileVideoPlayer != null) {
+      this.widthMobile = this.mobileVideoPlayer.nativeElement.offsetWidth;
+      this.heightMobile = this.mobileVideoPlayer.nativeElement.offsetHeight;
     }
 
-    this.width = this.videoPlayer.nativeElement.offsetWidth;
-    this.height = this.videoPlayer.nativeElement.offsetHeight;
     this._changeDetectionRef.detectChanges();
   }
 

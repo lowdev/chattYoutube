@@ -19,11 +19,15 @@
       <li class="waves-effect waves-light"><a href="#!" (click)="hideVideoPlayerWidget()"><i class="material-icons">flip_to_front</i></a></li>
     </ul>
   </div>
+
+  <!-- To fix the bug... -->
+  <div #mobileVideoPlayer class="app-video-mobile">
+  </div>
 </div>
 
 <div class="vbox viewport" *ngIf="isMobile">
-  <div class="app-video-mobile">
-    <app-video [id]="id" [width]="426" [height]="240"></app-video>
+  <div #mobileVideoPlayer class="app-video-mobile">
+    <app-video [id]="id" [width]="widthMobile" [height]="heightMobile"></app-video>
   </div>
   <div class="videos-list-mobile">
     <videos-search-bar></videos-search-bar>

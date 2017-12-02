@@ -45,18 +45,17 @@
 }
 
 .app-video-mobile {
-  height: 240px;
+  width: 100%;
+  height: 250px;
   text-align: center;
 }
 
 .videos-list-mobile {
-  /* previous syntax */
   -webkit-box-flex: 5;
      -moz-box-flex: 5;
       -ms-box-flex: 5;
           box-flex: 5;
 
-  /* current syntax */
   -webkit-flex: 5;
      -moz-flex: 5;
       -ms-flex: 5;
@@ -70,7 +69,6 @@
   margin: 0;
 }
 .vbox {
-  /* previous syntax */
   display: -webkit-box;
   display:    -moz-box;
 
@@ -79,7 +77,6 @@
       -ms-box-orient: vertical;
           box-orient: vertical;
 
-  /* current syntax */
   display: -webkit-flex;
   display:    -moz-flex;
   display:     -ms-flex;
